@@ -1,0 +1,34 @@
+/* 
+In the root element, define a variable for your custom color with the value red, green, blue.
+Important: The variable must not include the rgb() function. Only the rgb values separated by commas.
+*/
+:root
+{
+    --customColor: red, green, blue;
+}
+
+/*
+Now in the h1 element, we can use the custom color variable to set the custom color.
+We can use the var() function inside the rgb() function to get the value of the custom color variable.
+*/
+h1
+{
+    color: rgb(var(--customColor));
+}
+
+/*'
+Because the color variable does not include the rgb() function but only the rgb values,
+we can use the rgba() function to manipulate the alpha.
+This is because rgba() is the same as rgb() but with an additional parameter for the alpha value.
+The syntax for the rgba() function is rgba(red, green, blue, alpha).
+
+You see, if we used the rgb() function in the custom color variable, we could not use the rgba() function.
+The reason is that the rgba() function would then be rgba(rgb(red, green, blue), alpha) if we had the rgb() function inside the custom color variable which is invalid.
+
+Without the rgb() function inside the custom color variable, we can use the rgba() function like this:
+rgba(var(--color), alpha) which then translates to rgba(red, green, blue, alpha). (this is the valid syntax).
+*/
+h2
+{
+    color: rgba(var(--customColor), alpha);
+}
